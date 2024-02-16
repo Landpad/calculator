@@ -1,0 +1,69 @@
+*{
+    font-family: "Roboto", sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.calculatorContainer{
+    width: 400px;
+    height: 500px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#display{
+    width: 80%;
+    height: 15%;
+    background-color: white;
+    margin-top: 5%;
+    font-size: 2.25em;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.buttonContainer{
+    width: 80%;
+    height: 65%;
+    background-color: orangered;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+#rightButtons{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+
+#leftButtons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.calcButton{
+    width: 60px;
+    height: 45px;
+    margin: 10px;
+
+}
+
+#sum{
+    height: 110px;
+}
