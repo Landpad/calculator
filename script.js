@@ -11,7 +11,12 @@ function multiply(num1, num2){
 }
 
 function divide(num1, num2){
+    if( num2 == 0){
+        return 'What are you doing maquina?';
+    }else {
     return num1 / num2;
+    }
+    
 }
 
 function operate(num1,num2,operator){
@@ -20,9 +25,21 @@ function operate(num1,num2,operator){
             lastNumber = add(num1,num2);
             displayValue(lastNumber);
             break;
+        case `-`:
+            lastNumber = subtract(num1,num2);
+            displayValue(lastNumber);
+            break;
+        case `*`:
+            lastNumber = multiply(num1,num2);
+            displayValue(lastNumber);
+            break;
+        case `/`:
+            lastNumber = divide(num1,num2);
+            displayValue(lastNumber);
+            break;
             
     }
-    answered = true;
+    operator = '';
     return lastNumber;
 }
 
@@ -55,23 +72,10 @@ function displayContent(btnId){
     const button = document.querySelector(`#${btnId}`);
     let buttonValue = button.textContent;
     display.textContent += buttonValue;
-    if( answered == true ){
-        display.textContent = '';
-        display.textContent = buttonValue;
-    }
 }
 
 function displayValue(value){
     display.textContent = value;
-}
-
-function checkStatus(status){
-    if( answered == true ){
-        firstNumber = '';
-        lastNumber = '';
-        displayValue('');
-        answered = false;
-    }
 }
 
 function checkOperation(){
@@ -92,6 +96,26 @@ function clearVariables(){
     display.textContent = '';
 }
 
+function checkNextOperation(){
+    if ( answered == true ){
+        display.textContent = '';
+        clearVariables();
+    }
+
+    if( operationPerformed === true ){
+        display.textContent = '';
+        operationPerformed = false;
+    }
+}
+
+function processOperation(targetId){
+    operator = storeOperator(targetId);
+    display.textContent = '';
+    checkOperation();
+    operated = true;
+    operationPerformed = true;
+}
+
 function getButtonClicked(event){
 
     switch(event.target.id){
@@ -99,17 +123,23 @@ function getButtonClicked(event){
             clearVariables();
             break;
         case `btn11`:
-            operator = storeOperator(event.target.id);
-            display.textContent = '';
-            checkOperation();
-            
-            operated = true;
+            processOperation(event.target.id);
+            break;
+        case `btn12`:
+            processOperation(event.target.id);
+            break;
+        case `btn13`:
+            processOperation(event.target.id);
+            break;
+        case `btn14`:
+            processOperation(event.target.id);
             break;
         case `btn10`:
             operate(lastNumber, firstNumber, operator);
+            answered = true;
             break;
         default:
-          //  checkStatus(answered);
+            checkNextOperation();
             updateButton(event.target.id);
             displayContent(event.target.id);
         }
@@ -121,6 +151,7 @@ let lastNumber = '';
 let operator;
 let answered = false;
 let operated = false;
+let operationPerformed = false;
 
 const buttonContainer = document.querySelector('.buttonContainer');
 const display = document.querySelector('#display');
@@ -128,7 +159,6 @@ const display = document.querySelector('#display');
 buttonContainer.addEventListener('click', (event) => {
     getButtonClicked(event, 18);
 });
-
 //Cuando vuelvo a tocar un boton de operacion al poner 2 valores ya me tiene que dar un resultado.
 
 
