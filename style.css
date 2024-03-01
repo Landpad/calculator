@@ -155,6 +155,21 @@ a:active {
         font-size: 1em;
     }
 
+    a:hover {
+        position: relative;
+        top: 5px;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+        -ms-box-shadow: none !important;
+        -o-box-shadow: none !important;
+        box-shadow: none !important;
+        -webkit-transition: All 100ms ease;
+        -moz-transition: All 100ms ease;
+        -o-transition: All 100ms ease;
+        -ms-transition: All 100ms ease;
+        transition: All 100ms ease;
+      }
+
     .calcButton{
         width: 31.22%;
         height: 15.5%;
